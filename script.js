@@ -1,6 +1,5 @@
 const board = document.getElementById("board");
 const counter = document.querySelector(".counter");
-
 const cells = [];
 
 const cols = 30;
@@ -17,19 +16,18 @@ for (i = 0; i < cols * rows; i++) {
 
 board.addEventListener("contextmenu", (event) => event.preventDefault());
 
-for(x of cells){
+for (x of cells) {
   x.setAttribute("value", "empty");
   x.setAttribute("class", "cell");
-} 
+}
 
 function mine() {
   if (cells) {
-    const randoms = []; 
-    while(randoms.length<mines)
-      {
-        ran = Math.floor(Math.random() * cells.length);
-        if(!randoms.includes(ran)){
-        randoms.push(ran)
+    const randoms = [];
+    while (randoms.length < mines) {
+      ran = Math.floor(Math.random() * cells.length);
+      if (!randoms.includes(ran)) {
+        randoms.push(ran);
       }
     }
     for (o = 0; o < mines; o++) {
@@ -37,7 +35,7 @@ function mine() {
     }
   }
 }
-mine()
+mine();
 
 const cellLocation = [];
 
@@ -84,8 +82,13 @@ function number() {
       }
     }
   }
-  const emptyCell=cells.filter(item=>item.getAttribute('value')==='empty')
-  emptyCell[Math.floor(Math.random()*emptyCell.length)].setAttribute('class','cell empty');
+  const emptyCell = cells.filter(
+    (item) => item.getAttribute("value") === "empty"
+  );
+  emptyCell[Math.floor(Math.random() * emptyCell.length)].setAttribute(
+    "class",
+    "cell empty"
+  );
 }
 number();
 
@@ -102,7 +105,7 @@ function handleMark() {
 function handleClick() {
   if (this.className !== "cell marked") {
     this.setAttribute("class", "cell clicked");
-    if(this.getAttribute('value')==='empty')reveal()
+    if (this.getAttribute("value") === "empty") reveal();
     if (this.getAttribute("value") === "mine") {
       cells.forEach((item) => {
         if (item.getAttribute("value") === "mine") {
@@ -110,11 +113,10 @@ function handleClick() {
           board.setAttribute("class", "board disable");
           counter.innerHTML = `<img src="./img/bomb.png"/><h2>LOSER</h2>`;
         }
-      }
-    );
+      });
     }
   }
-  
+
   const notClick = cells.filter((item) => item.className !== "cell clicked");
   if (notClick.length <= mines) {
     board.setAttribute("class", "board disable");
@@ -129,42 +131,47 @@ cells.forEach((cell) => {
 });
 
 function reveal() {
-  cells.forEach(()=>{for (row = 0; row < cellLocation.length; row++) {
-    for (col = 0; col < cellLocation[row].length; col++) {
-      const midCell = cellLocation[row][col];
-      const leftCell = cellLocation[row]?.[col - 1];
-      const rightCell = cellLocation[row]?.[col + 1];
-      const upperCell = cellLocation[row - 1]?.[col];
-      const upperLeftCell = cellLocation[row - 1]?.[col - 1];
-      const upperRightCell = cellLocation[row - 1]?.[col + 1];
-      const lowerCell = cellLocation[row + 1]?.[col];
-      const lowerLeftCell = cellLocation[row + 1]?.[col - 1];
-      const lowerRightCell = cellLocation[row + 1]?.[col + 1];
-      const neighbor = [
-        leftCell,
-        rightCell,
-        upperCell,
-        lowerCell,
-        upperLeftCell,
-        upperRightCell,
-        lowerLeftCell,
-        lowerRightCell,
-      ].filter((cell) => cell !== undefined);
+  cells.forEach(() => {
+    for (row = 0; row < cellLocation.length; row++) {
+      for (col = 0; col < cellLocation[row].length; col++) {
+        const midCell = cellLocation[row][col];
+        const leftCell = cellLocation[row]?.[col - 1];
+        const rightCell = cellLocation[row]?.[col + 1];
+        const upperCell = cellLocation[row - 1]?.[col];
+        const upperLeftCell = cellLocation[row - 1]?.[col - 1];
+        const upperRightCell = cellLocation[row - 1]?.[col + 1];
+        const lowerCell = cellLocation[row + 1]?.[col];
+        const lowerLeftCell = cellLocation[row + 1]?.[col - 1];
+        const lowerRightCell = cellLocation[row + 1]?.[col + 1];
+        const neighbor = [
+          leftCell,
+          rightCell,
+          upperCell,
+          lowerCell,
+          upperLeftCell,
+          upperRightCell,
+          lowerLeftCell,
+          lowerRightCell,
+        ].filter((cell) => cell !== undefined);
 
-        if(midCell.getAttribute("value") ==='empty' && midCell.className ==='cell clicked') {   
-        for (e = 0; e < neighbor.length; e++)
-          if (neighbor[e].getAttribute("value") !== "mine"&&neighbor[e].getAttribute("value") !=='cell marked'&&neighbor[e].className!=='cell clicked') {
-            neighbor[e].setAttribute('class','cell clicked')
-          }
+        if (
+          midCell.getAttribute("value") === "empty" &&
+          midCell.className === "cell clicked"
+        ) {
+          for (e = 0; e < neighbor.length; e++)
+            if (
+              neighbor[e].getAttribute("value") !== "mine" &&
+              neighbor[e].className !== "cell marked" &&
+              neighbor[e].className !== "cell clicked"
+            ) {
+              neighbor[e].setAttribute("class", "cell clicked");
+            }
+        }
       }
     }
-  }
+  });
 }
-)}
-
-
 
 const reload = () => location.reload();
-
 
 // cells.forEach((item)=>{if(item.getAttribute('value')==='mine')console.log(1);});
