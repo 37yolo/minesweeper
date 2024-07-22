@@ -1,0 +1,184 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-image: radial-gradient(
+    rgb(255, 255, 255) 1.2px,
+    rgb(33, 33, 33) 1.2px
+  );
+  background-size: 24px 24px;
+  font-family: "Teko", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav {
+  background-color: #3d3d3d;
+  top: 0%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 25px;
+  color: rgb(255, 255, 255);
+}
+
+.title {
+  padding-top: 10px;
+  font-size: 3em;
+  font-weight: 600;
+}
+.title img {
+  height: 45px;
+}
+.counter img {
+  height: 50px;
+  padding: 5px;
+}
+.counter h2 {
+  margin: 0;
+  padding: 0;
+}
+.counter {
+  display: flex;
+  flex-direction: row;
+  font-size: 2em;
+  font-weight: 300;
+  padding-top: 10px;
+  margin-left: -240px;
+}
+.reset {
+  outline: 0;
+  grid-gap: 8px;
+  align-items: center;
+  background-color: #ff3b3b;
+  color: #ffffff;
+  border: 1px solid #000;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-flex;
+  flex-shrink: 0;
+  font-size: 25px;
+  font-weight: 600;
+  gap: 8px;
+  justify-content: center;
+  line-height: 1.5;
+  overflow: hidden;
+  padding: 4px 8px;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  transition: all .14s ease-out;
+  white-space: nowrap;
+}
+.reset:hover {
+  box-shadow: 4px 4px 0 #000;
+  transform: translate(-4px,-4px);
+}
+.reset:focus-visible{
+  outline-offset: 1px;
+}
+
+
+.container {
+  width: 100vw;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px;
+  padding: 0px;
+}
+#board {
+  background-color: #777777;
+  width: 1220px;
+  height: 820px;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
+}
+
+.cell {
+  width: 40x;
+  height: 40px;
+  border: 0.5px solid rgb(74, 74, 74);
+  background-color: #3d3d3d;
+  cursor: pointer;
+  margin: -0.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: xx-large;
+  color: transparent;
+  user-select: none;
+}
+
+.cell:hover {
+  background-color: rgb(165, 165, 165);
+  color: rgb(165, 165, 165);
+}
+.empty{
+  background-color: #19ff66;
+}
+.mine[value="mine"] {
+  background-image: url("./img/bomb.png");
+  background-color: rgb(255, 118, 159);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.clicked[value="1"] {
+  color: rgb(0, 217, 255);
+}
+.clicked[value="2"] {
+  color: rgb(0, 255, 106);
+}
+.clicked[value="3"] {
+  color: rgb(255, 0, 106);
+}
+.clicked[value="4"] {
+  color: rgb(51, 36, 255);
+}
+.clicked[value="5"] {
+  color: rgb(255, 174, 0);
+}
+.clicked[value="6"] {
+  color: rgb(255, 0, 0);
+}
+.clicked[value="7"] {
+  color: rgb(49, 0, 0);
+}
+.clicked[value="8"] {
+  color: rgb(0, 0, 0);
+}
+.clicked {
+  border: none;
+  background-color: #777777;
+  border: 1px solid #777777;
+  cursor: alias;
+  pointer-events: none;
+}
+.clicked:hover {
+  background-color: #777777;
+  border-color: #777777;
+}
+.mine:hover {
+  background-color: rgb(255, 118, 159);
+  border-color: rgb(255, 118, 159);
+}
+
+.marked {
+  background-image: url("./img/flag.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: alias;
+}
+.marked:hover {
+  background-color: #3d3d3d;
+  color: transparent;
+}
+
+.disable {
+  pointer-events: none;
+}
