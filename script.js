@@ -172,4 +172,54 @@ function reveal() {
   });
 }
 
+let counter2 = 0;
+let counter1 = 0;
+
+function scanner(e) {
+  const scanned = cells.filter(
+    (item) =>
+      item.getAttribute("value") === "empty" &&
+      item.className !== "cell clicked" &&
+      item.className !== "cell marked"
+  );
+  if (counter2 < 2) {
+    scanned[Math.floor(Math.random() * scanned.length)].setAttribute(
+      "class",
+      "cell empty"
+    );
+  } else if (counter2=2){
+    scanned[Math.floor(Math.random() * scanned.length)].setAttribute(
+      "class",
+      "cell empty"
+    );
+    e.target.className = "btn-disable";
+  }
+  counter2++;
+}
+
+function scanner1(e) {
+  const scanned = cells.filter(
+    (item) =>
+      item.getAttribute("value") === "mine" &&
+      item.className !== "cell clicked" &&
+      item.className !== "cell marked"
+  );
+  if (counter1 <4) {
+    scanned[Math.floor(Math.random() * scanned.length)].setAttribute(
+      "class",
+      "cell danger"
+    );
+  } else if(counter1===4){
+    scanned[Math.floor(Math.random() * scanned.length)].setAttribute(
+      "class",
+      "cell danger"
+    );
+    e.target.className = "btn-disable";
+  }
+  counter1++;
+}
+
+document.querySelector(".scan").addEventListener("click", scanner);
+document.querySelector(".scan1").addEventListener("click", scanner1);
+
 const reload = () => location.reload();
