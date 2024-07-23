@@ -111,7 +111,7 @@ function handleClick() {
         if (item.getAttribute("value") === "mine") {
           item.setAttribute("class", "cell mine");
           board.setAttribute("class", "board disable");
-          counter.innerHTML = `<img src="./img/bomb.png"/><h2>LOSER</h2>`;
+          counter.innerHTML = `<img src="./img/bomb.png"/><h2>YOU LOSE</h2>`;
         }
       });
     }
@@ -120,7 +120,7 @@ function handleClick() {
   const notClick = cells.filter((item) => item.className !== "cell clicked");
   if (notClick.length <= mines) {
     board.setAttribute("class", "board disable");
-    counter.innerHTML = `<img src="./img/flag.png"/><h2>WINNER</h2>`;
+    counter.innerHTML = `<img src="./img/flag.png"/><h2>YOU WIN</h2>`;
   }
 }
 
@@ -173,5 +173,3 @@ function reveal() {
 }
 
 const reload = () => location.reload();
-
-// cells.forEach((item)=>{if(item.getAttribute('value')==='mine')console.log(1);});

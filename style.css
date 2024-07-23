@@ -83,7 +83,7 @@ body {
 
 .container {
   width: 100vw;
-  height: 90vh;
+  height: 880px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -102,7 +102,7 @@ body {
   width: 40x;
   height: 40px;
   border: 0.5px solid rgb(74, 74, 74);
-  background-color: #3d3d3d;
+  background-color: #3e3e3e;
   cursor: pointer;
   margin: -0.5px;
   display: flex;
@@ -153,14 +153,10 @@ body {
 }
 .clicked {
   border: none;
-  background-color: #777777;
+  background-color: #141414;
   border: 1px solid #777777;
   cursor: alias;
   pointer-events: none;
-}
-.clicked:hover {
-  background-color: #777777;
-  border-color: #777777;
 }
 .mine:hover {
   background-color: rgb(255, 118, 159);
